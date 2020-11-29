@@ -10,6 +10,34 @@
   </head>
 
   <body>
+    <% if user_signed_in? %>
+      <!--<li>-->
+       <%#= link_to "Home",マイページへのパス %>
+      <!--</li>-->
+      <!--<li>-->
+        <%#= link_to "Users",名前&パスワードの入力, 登録ユーザー一覧へのパス %>
+      <!--</li>-->
+      <!--<li>-->
+       <%#= link_to "Bookes",投稿一覧へのパス %>
+      <!--</li>-->
+      <li>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      </li>
+    <% else %>
+      <!--<li>-->
+       <%#= link_to "Home",Top画面へ突き返し %>
+      <!--</li>-->
+      <!--<li>-->
+       <%#= link_to "About",header, footerのみのページ %>
+      <!--</li>-->
+      <li>
+       <%= link_to "sign up", new_user_registration_path %>
+      </li>
+       <li>
+       <%= link_to "log in", new_user_session_path %>
+      </li>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
