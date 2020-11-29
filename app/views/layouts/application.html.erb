@@ -11,15 +11,15 @@
 
   <body>
     <% if user_signed_in? %>
-      <!--<li>-->
-       <%#= link_to "Home",マイページへのパス %>
-      <!--</li>-->
-      <!--<li>-->
-        <%#= link_to "Users",名前&パスワードの入力, 登録ユーザー一覧へのパス %>
-      <!--</li>-->
-      <!--<li>-->
-       <%#= link_to "Bookes",投稿一覧へのパス %>
-      <!--</li>-->
+      <li>
+       <%= link_to "Home", user_path(current_user.id) %>
+      </li>
+      <li>
+        <%= link_to "Users",users_path %>
+      </li>
+      <li>
+       <%= link_to "Bookes", post_books_path %>
+      </li>
       <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>

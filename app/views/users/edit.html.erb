@@ -1,0 +1,11 @@
+<h1>User info</h1>
+
+<%= form_with model: @user, local:true do |f| %>
+  <h4>Name</h4>
+  <%= f.text_field :name %>
+  <label>Image</label>
+  <%= f.attachment_field :profile_image, placefolder: "ファイルを選択" %>
+  <h4>Introduction</h4>
+  <%= f.text_area :introduction %>
+  <%= f.submit "Update User" %>
+<% end %>
