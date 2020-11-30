@@ -1,0 +1,48 @@
+<p><%= notice %></p>
+
+<h1>User Info</h1>
+<table>
+
+  <%=attachment_image_tag user, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
+  <tr>
+    <th>name</th>
+    <th><%= user.name %></th>
+  </tr>
+  <tr>
+    <th>introduction</th>
+    <th><%= user.introduction %></th>
+  </tr>
+  
+</table>
+<%= link_to edit_user_path(current_user.id), class: 'btn btn-default' do %>
+  <i class="fas fa-user-cog"></i>
+<% end %>
+
+
+<h1>New book</h1>
+<% if book.errors.any? %>
+  <p><%= pluralize(book.errors.count, "error") %> prohibited this obj from being saved:</p>
+  <% book.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
+<%= form_with model: book, url: post_books_path, local:true do |f| %>
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+  <h4>Opnion</h4>
+  <%= f.text_area :body %>
+  <%= f.submit "Create Book" %>
+<% end %>
+
+
+<!--@user → userへ変更-->
+<!--@book → bookへ変更-->
+
+<!--users 呼び出しview側-->
+<%#= render 'users/sidebar', user: @user %>
+<%#= render 'users/sidebar', book: @book %>
+
+<!--post_books 呼び出しview側-->
+<%#= render 'post_books/sidebar', user: @user %>
+<%#= render 'post_books/sidebar', book: @book %>

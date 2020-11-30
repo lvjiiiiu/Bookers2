@@ -1,54 +1,56 @@
 <p><%= notice %></p>
-
-
-<h1>User Info</h1>
-<table>
-  <% if user_signed_in? %>
-  <%=attachment_image_tag @user, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
-  <tr>
-    <th>name</th>
-    <th><%= current_user.name %></th>
-  </tr>
-  <tr>
-    <th>introduction</th>
-    <th><%= current_user.introduction %></th>
-  </tr>
-  <% end %>
-</table>
-<%= link_to %>
-
-
-
-<h1>New book</h1>
-<% if @book.errors.any? %>
-  <p><%= pluralize(@book.errors.count, "error") %> prohibited this obj from being saved:</p>
-  <% @book.errors.full_messages.each do |message| %>
-    <%= message %>
-  <% end %>
-<% end %>
-
-<%= form_with model: @book, url: post_books_path, local:true do |f| %>
-  <h4>Title</h4>
-  <%= f.text_field :title %>
-  <h4>Opnion</h4>
-  <%= f.text_area :body %>
-  <%= f.submit "Create Book" %>
-<% end %>
-
-<h1>Books</h1>
-<table>
-  <tr>
-    <th></th>
-    <th>Title</th>
-    <th>Opinion</th>
-  </tr>
-  <% @books.each do |books| %>
-  <tr>
-    <td><%=attachment_image_tag books.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %></td>
-    <td><%= link_to books.title, post_book_path(books.id) %></td>
-    <td><%= books.body %></td>
-  </tr>
-  <% end %>
-</table>
-
+<div class="containar">
+  <div class="row">
+    <div class="col-md-4">
+      <h1>User Info</h1>
+      <table> 
+        <%=attachment_image_tag @user, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
+        <tr>
+          <th>name</th>
+          <th><%= @user.name %></th>
+        </tr>
+        <tr>
+          <th>introduction</th>
+          <th><%= @user.introduction %></th>
+        </tr>
+      </table>
+      <%= link_to edit_user_path(current_user.id), class: 'btn btn-default' do %>
+        <i class="fas fa-user-cog"></i>
+      <% end %>
+      
+      <h1>New book</h1>
+      <% if @book.errors.any? %>
+        <p><%= pluralize(@book.errors.count, "error") %> prohibited this obj from being saved:</p>
+        <% @book.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+      <% end %>
+      
+      <%= form_with model: @book, url: post_books_path, local:true do |f| %>
+        <h4>Title</h4>
+        <%= f.text_field :title %>
+        <h4>Opnion</h4>
+        <%= f.text_area :body %>
+        <%= f.submit "Create Book" %>
+      <% end %>
+    </div>
+    <div class="col-md-8">
+      <h1>Books</h1>
+      <table>
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Opinion</th>
+        </tr>
+        <% @books.each do |books| %>
+        <tr>
+          <td><%=attachment_image_tag books.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %></td>
+          <td><%= link_to books.title, post_book_path(books.id) %></td>
+          <td><%= books.body %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
 

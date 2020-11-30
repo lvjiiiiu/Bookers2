@@ -1,5 +1,21 @@
 <p><%= notice %></p>
 
+ <%=attachment_image_tag @user, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
+  <tr>
+    <th>name</th>
+    <th><%= @user.name %></th>
+  </tr>
+  <tr>
+    <th>introduction</th>
+    <th><%= @user.introduction %></th>
+  </tr>
+  
+</table>
+<%= link_to edit_user_path(current_user.id), class: 'btn btn-default' do %>
+  <i class="fas fa-user-cog"></i>
+<% end %>
+
+
 <h1>Books</h1>
 <table>
   <tr>
