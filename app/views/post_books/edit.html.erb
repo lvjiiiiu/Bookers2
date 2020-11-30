@@ -1,5 +1,15 @@
-<h1>Editing Book</h1>
+<p><%= notice %></p>
 
+<h1>Editing Book</h1>
+<% if @book.errors.any? %>
+  <p><%= pluralize(@book.errors.count, "error") %> prohibited this obj from being saved:</p>
+  <% @book.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
+<!--edit updateがうまくいかない(form_withで指定しているurlのせいかとおもわれ！)-->
+<!--edit updateがうまくいったら、validationのエラーメッセージとサクセスメッセージがちゃんとでるか確認する-->
 <%= form_with model: @book, url: edit_post_book_path(@book), local:true do |f| %>
   <h4>Title</h4>
   <%= f.text_field :title %>

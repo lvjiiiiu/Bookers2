@@ -9,7 +9,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <nav>
     <% if user_signed_in? %>
       <li>
        <%= link_to "Home", user_path(current_user.id) %>
@@ -18,18 +18,19 @@
         <%= link_to "Users",users_path %>
       </li>
       <li>
-       <%= link_to "Bookes", post_books_path %>
+       <%= link_to "Books", post_books_path %>
       </li>
       <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <%= link_to "logout", destroy_user_session_path, method: :delete %>
       </li>
     <% else %>
-      <!--<li>-->
-       <%#= link_to "Home",Top画面へ突き返し %>
-      <!--</li>-->
-      <!--<li>-->
-       <%#= link_to "About",header, footerのみのページ %>
-      <!--</li>-->
+      <li>
+       <%= link_to "Home", root_path %>
+      </li>
+      <li>
+       <%= link_to "About", about_path %>
+      </li>
+  
       <li>
        <%= link_to "sign up", new_user_registration_path %>
       </li>
@@ -39,5 +40,16 @@
     <% end %>
 
     <%= yield %>
+  </nav>
+  
+  <!--deviseのサクセスメッセージ-->
+  <body>
+  <% if notice %>
+  　　<p><%= notice %></p>
+  <% end %>
+  <% if alert %>
+     <p><%= alert %></p>
+  <% end %>
   </body>
+
 </html>

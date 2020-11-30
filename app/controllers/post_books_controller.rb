@@ -7,10 +7,14 @@ class PostBooksController < ApplicationController
     end
 
   def create
+    @books = Book.all
     @book = Book.new(book_params)
     @book.user_id = current_user.id
-    @book.save
-    redirect_to post_books_path(@book)
+    if @book.save
+      redirect_to post_books_path(@book), notice: "You have created book successfully."
+    else
+      render :index
+    end
   end
 
   def show
@@ -25,7 +29,7 @@ class PostBooksController < ApplicationController
     @book = Book.find(params[:id])
     @book.user_id = current_user.id
     @book.update(book_params)
-    redirect_to post_books_path(@book.id)
+    redirect_to post_books_path(@book.id), notice: "You have updated book successfully."
   end
 
 # No route matches [PATCH] "/post_books/1/edit"
