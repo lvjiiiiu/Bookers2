@@ -1,23 +1,18 @@
 
-<div class="container">
+<div class="container mt-3">
   <div class="row">
-    <div class="col-md-12, m-0, p-0">
-    <h1>welcome to <i class="fas fa-book"></i>Bookers!!</h1>
-      <p>in <i class="fas fa-book"></i>Bookers,<br>
-        you can share and exchange your opinions , inpressions , and emotions<br>
-        about various books!
-      </p>
-    </div>
-    <div class="col-md-10">
-      <div class="col-md-12">
-        <button type="button" class="btn btn-info">
-          <%= link_to "Log in", new_user_session_path, class: 'text-white' %>
-        </button>
+    <div class="m-0 p-0">
+    <h1>welcome to <i class="fas fa-book"></i><strong>Bookers</strong>!!</h1>
+      <p class="mb-3">in <i class="fas fa-book"></i><strong>Bookers</strong>,</p>
+      <p class="mb-3">you can share and exchange your opinions , inpressions , and emotions</p>
+      <p class="mb-3">about various books!</p>
+
+      <div class="row">
+          <%= link_to "Log in", new_user_session_path, class: "text-white btn btn-info px-5 mb-2 mx-auto w-75" %>
       </div>
-      <div class="col-md-5">
-        <button type="button" class="btn btn-success">
-          <%= link_to "sign up", new_user_registration_path, class: 'text-white' %>
-        </button>
+      <div class="row">
+          <%= link_to "sign up", new_user_registration_path, class: "text-white btn btn-success px-5 mb-2 mx-auto w-75" %>
+      </div>
       </div>
     </div>
 </div>
