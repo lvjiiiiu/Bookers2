@@ -3,7 +3,8 @@ class PostBooksController < ApplicationController
     def index
       @books = Book.all
       @book = Book.new
-      @user = current_user
+      @book_sidebar = Book.new
+      @user = User.find(current_user.id)
     end
 
   def create
@@ -11,7 +12,7 @@ class PostBooksController < ApplicationController
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     if @book.save
-      redirect_to post_books_path(@book), notice: "You have created book successfully."
+      redirect_to post_book_path(@book.id), notice: "You have created book successfully."
     else
       render :index
     end
@@ -19,6 +20,8 @@ class PostBooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @user = User.find(current_user.id)
+    @book_sidebar = Book.new
   end
 
   def edit
@@ -32,7 +35,6 @@ class PostBooksController < ApplicationController
     redirect_to post_books_path(@book.id), notice: "You have updated book successfully."
   end
 
-# No route matches [PATCH] "/post_books/1/edit"
 
   def destroy
     @book = Book.find(params[:id])

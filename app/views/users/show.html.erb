@@ -1,6 +1,7 @@
 <p><%= notice %></p>
 
  <%=attachment_image_tag @user, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
+  <table>
   <tr>
     <th>name</th>
     <th><%= @user.name %></th>
@@ -9,18 +10,19 @@
     <th>introduction</th>
     <th><%= @user.introduction %></th>
   </tr>
-
 </table>
 <%= link_to edit_user_path(current_user.id), class: 'btn btn-default' do %>
   <i class="fas fa-user-cog"></i>
 <% end %>
 
 
-<h1>Books</h1>
-<table>
+<h2>Books</h2>
+
+<table class="table">
   <tr>
-    <th>Title</th>
-    <th>Opinion</th>
+    <th scope="col-md-1"></th>
+    <th scope="col-md-1">Title</th>
+    <th scope="col-md-1">Opinion</th>
   </tr>
   <% @books.each do |books| %>
   <tr>
