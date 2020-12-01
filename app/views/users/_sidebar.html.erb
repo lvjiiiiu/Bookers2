@@ -11,16 +11,16 @@
       <th>introduction</th>
       <th><%= user.introduction %></th>
     </tr>
-    </table>
-    <% if user.id == current_user.id %>
-      <%= link_to edit_user_path(current_user.id), class: "btn btn-outline-secondary w-100 p-0" do %>
-        <i class="fas fa-user-cog"></i>
-      <% end %>
-    <% else %>
-      <%= link_to user_path(current_user.id), class: "btn btn-outline-secondary w-100 p-0" do %>
-        <i class="fas fa-user-cog"></i>
-      <% end %>
+  </table>
+  <% if user.id == current_user.id %>
+    <%= link_to edit_user_path(current_user.id), class: "btn btn-outline-secondary w-100 p-0" do %>
+      <i class="fas fa-user-cog"></i>
     <% end %>
+  <% else %>
+    <%= link_to user_path(current_user.id), class: "btn btn-outline-secondary w-100 p-0" do %>
+      <i class="fas fa-user-cog"></i>  
+    <% end %>
+  <% end %>
 <!-----------------------New Book-------------------------------------------->
   <h2 class="py-2 mt-2">New book</h2>
     <div class="text-danger mb-3">
@@ -42,8 +42,8 @@
         <%= f.submit "Create Book", class: "btn btn-success mt-2" %>
     <% end %>
 </div>
-<!------------------------------memo-------------------------------------->
 
+<!------------------------------memo-------------------------------------->
 <!--@user → userへ変更-->
 <!--@book → bookへ変更-->
 

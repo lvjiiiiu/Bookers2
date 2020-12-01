@@ -1,35 +1,24 @@
-<p><%= notice %></p>
-
- <%=attachment_image_tag @user, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
-  <table>
-  <tr>
-    <th>name</th>
-    <th><%= @user.name %></th>
-  </tr>
-  <tr>
-    <th>introduction</th>
-    <th><%= @user.introduction %></th>
-  </tr>
-</table>
-<%= link_to edit_user_path(current_user.id), class: 'btn btn-default' do %>
-  <i class="fas fa-user-cog"></i>
-<% end %>
-
-
-<h2>Books</h2>
-
-<table class="table">
-  <tr>
-    <th scope="col-md-1"></th>
-    <th scope="col-md-1">Title</th>
-    <th scope="col-md-1">Opinion</th>
-  </tr>
-  <% @books.each do |books| %>
-  <tr>
-    <td><%=attachment_image_tag books.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %></td>
-    <td><%= link_to books.title, post_book_path(books.id) %></td>
-    <td><%= books.body %></td>
-  </tr>
-  <% end %>
-</table>
+<p class="text-success"><%= notice %></p>
+<div class="containar w-100">
+  <div class="row">
+    <%= render 'post_books/sidebar', user: @user_sidebar, book: @book_sidebar %>
+      <div class="col-md-6 ml-5">
+        <h2>Books</h2>
+        <table class="table">
+          <tr>
+            <th scope="col-md-1"></th>
+            <th scope="col-md-1">Title</th>
+            <th scope="col-md-1">Opinion</th>
+          </tr>
+          <% @books.each do |books| %>
+          <tr>
+            <td><%=attachment_image_tag books.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %></td>
+            <td><%= link_to books.title, post_book_path(books.id) %></td>
+            <td><%= books.body %></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
 

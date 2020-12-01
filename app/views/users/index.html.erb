@@ -1,14 +1,22 @@
-<table class="table">
-  <tr>
-    <th scope="col-md-1">image</th>
-    <th scope="col-md-3">name</th>
-    <th scope="col-md-8"></th>
-  </tr>
-  <% @users.each do |users| %>
-  <tr>
-    <td><%=attachment_image_tag users, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %></td>
-    <td><%= users.name %></td>
-    <td><%= link_to "Show", user_path(users.id) %></td>
-  </tr>
-  <% end %>
-</table>
+<div class="containar w-100">
+  <div class="row">
+    <%= render 'users/sidebar', user: @user_sidebar, book: @book_sidebar %>
+     <div class="col-md-6 ml-5">
+      <h2 class="py-2 mb-0">Users</h2>
+      <table class="table">
+        <tr>
+          <th scope="col-md-1">image</th>
+          <th scope="col-md-3">name</th>
+          <th scope="col-md-8"></th>
+        </tr>
+        <% @users.each do |users| %>
+        <tr>
+          <td><%=attachment_image_tag users, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %></td>
+          <td><%= users.name %></td>
+          <td><%= link_to "Show", user_path(users.id) %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
