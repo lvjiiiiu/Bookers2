@@ -1,9 +1,8 @@
 <p><%= notice %></p>
-<div class="containar">
-  <div class="row">
+
     <div class="col-sm-12 col-md-8 col-lg-5 px-sm-0 mx-auto">
-      <h2 class="w-100">Editing Book</h2>
-        <div class="text-danger mb-3">
+      <h2 class="w-100 mt-3">Editing Book</h2>
+        <div class="text-danger mt-3">
           <% if @book.errors.any? %>
             <h2><%= pluralize(@book.errors.count, "error") %> prohibited this obj from being saved:</h2>
             <ul>
@@ -14,7 +13,7 @@
           <% end %>
         </div>
           <div class="w-100">
-            <%= form_with model: @book, url: post_book_path(@book), local:true do |f| %>
+            <%= form_with model: @book, url: book_path(@book), local:true do |f| %>
               <h6>Title</h6>
               <%= f.text_field :title, class: "w-100" %>
               <h6 class="mt-3">Oipnion</h6>
@@ -23,12 +22,9 @@
             <% end %>
           </div>
           <div class="w-100">
-            <%= link_to "Show", post_book_path(@book) %>
+            <%= link_to "Show", book_path(@book) %>
             <span> | </span>
-            <%= link_to "Back", post_books_path %>
+            <%= link_to "Back", books_path %>
         </div>
       </div>
-  </div>
-</div>
-
 

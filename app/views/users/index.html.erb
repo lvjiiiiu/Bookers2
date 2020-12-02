@@ -1,13 +1,12 @@
-<div class="containar w-100">
-  <div class="row">
+
     <%= render 'users/sidebar', user: @user_sidebar, book: @book_sidebar %>
-     <div class="col-md-6 ml-5">
+     <div class="col-md-8 offset-md-1 py-2">
       <h2 class="py-2 mb-0">Users</h2>
       <table class="table">
         <tr>
-          <th scope="col-md-1">image</th>
-          <th scope="col-md-3">name</th>
-          <th scope="col-md-8"></th>
+          <th>image</th>
+          <th>name</th>
+          <th></th>
         </tr>
         <% @users.each do |users| %>
         <tr>
@@ -18,5 +17,3 @@
         <% end %>
       </table>
     </div>
-  </div>
-</div>

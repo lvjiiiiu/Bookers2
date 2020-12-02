@@ -1,24 +1,24 @@
 <p class="text-success"><%= notice %></p>
-<div class="containar w-100">
-  <div class="row">
-    <%= render 'post_books/sidebar', user: @user_sidebar, book: @book_sidebar %>
-      <div class="col-md-6 ml-5">
+
+    <%= render 'books/sidebar', user: @user_sidebar, book: @book_sidebar %>
+      <div class="col-md-8 offset-md-1 py-2">
         <h2>Books</h2>
         <table class="table">
           <tr>
-            <th scope="col-md-1"></th>
-            <th scope="col-md-1">Title</th>
-            <th scope="col-md-1">Opinion</th>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
           </tr>
           <% @books.each do |books| %>
           <tr>
-            <td><%=attachment_image_tag books.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %></td>
-            <td><%= link_to books.title, post_book_path(books.id) %></td>
+            <td>
+              <%=link_to user_path(books.user.id) do %>
+                <%=attachment_image_tag books.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %>
+              <% end %>
+            </td>
+            <td><%= link_to books.title, book_path(books.id) %></td>
             <td><%= books.body %></td>
           </tr>
           <% end %>
         </table>
       </div>
-    </div>
-  </div>
-

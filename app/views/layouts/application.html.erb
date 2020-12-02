@@ -32,7 +32,7 @@
                     <% end %>
                   </li>
                   <li class="nav-item">
-                   <%= link_to post_books_path, class: 'nav-link text-white' do %>
+                   <%= link_to books_path, class: 'nav-link text-white' do %>
                      <i class="fas fa-book-open text-white mx-1"></i>Books
                    <% end %>
                   </li>
@@ -48,7 +48,7 @@
                    <% end %>
                   </li>
                   <li class="nav-item">
-                   <%= link_to about_path, class: 'nav-link text-white' do %>
+                   <%= link_to home_about_path, class: 'nav-link text-white' do %>
                      <i class="fas fa-link text-white mx-1"></i>About
                    <% end %>
                   </li>
@@ -73,9 +73,7 @@
 
         <div class="container">
           <div class="row">
-            <div class="col-md-10 mx-auto">
               <%= yield %>
-            </div>
           </div>
         </div>
       </main>
